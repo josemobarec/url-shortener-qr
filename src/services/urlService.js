@@ -67,9 +67,22 @@ async function getStats(shortCode) {
 
 }
 
+const QRCode = require("qrcode");
+
+async function generateQRCode(shortCode) {
+
+  const shortUrl = `http://localhost:3000/api/${shortCode}`;
+
+  const qr = await QRCode.toDataURL(shortUrl);
+
+  return qr;
+
+}
+
 module.exports = {
   createShortUrl,
   getOriginalUrl,
   incrementClicks,
-  getStats
+  getStats,
+  generateQRCode
 };

@@ -84,8 +84,33 @@ async function getStats(req, res) {
 
 }
 
+async function getQRCode(req, res) {
+
+  try {
+
+    const { short_code } = req.params;
+
+    const qr = await urlService.generateQRCode(short_code);
+
+    res.json({
+      qr_code: qr
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      error: "Internal server error"
+    });
+
+  }
+
+}
+
 module.exports = {
   shortenUrl,
   redirectUrl,
-  getStats
+  getStats,
+  getQRCode
 };

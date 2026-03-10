@@ -9,4 +9,6 @@ router.get("/stats/:short_code", urlController.getStats);
 
 router.get("/:short_code", urlController.redirectUrl);
 
+router.get("/qr/:short_code", urlController.getQRCode);
+
 module.exports = router;
