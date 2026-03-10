@@ -1,22 +1,19 @@
 const urlService = require("../services/urlService");
+const AppError = require("../utils/AppError");
 const validator = require("validator");
 
-async function shortenUrl(req, res) {
+async function shortenUrl(req, res, next) {
 
   try {
 
     const original_url = req.body?.original_url;
 
     if (!original_url) {
-      return res.status(400).json({
-        error: "original_url is required"
-      });
+      throw new AppError("original_url is required", 400);
     }
 
     if (!validator.isURL(original_url)) {
-      return res.status(400).json({
-        error: "invalid URL format"
-      });
+      throw new AppError("invalid URL format", 400);
     }
 
     const result = await urlService.createShortUrl(original_url);
@@ -29,13 +26,7 @@ async function shortenUrl(req, res) {
     });
 
   } catch (error) {
-
-    console.error(error);
-
-    res.status(500).json({
-      error: "Internal server error"
-    });
-
+    next(error);
   }
 
 }
