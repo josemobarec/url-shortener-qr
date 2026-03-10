@@ -1,11 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 
+const urlRoutes = require("./routes/urlRoutes");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = require("./database/db");
 
 app.use(express.json());
+
+app.use("/api", urlRoutes);
 
 app.get("/", (req, res) => {
   res.send("URL Shortener API is running");
