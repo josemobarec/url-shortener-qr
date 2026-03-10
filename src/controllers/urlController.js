@@ -56,7 +56,36 @@ async function redirectUrl(req, res) {
 
 }
 
+async function getStats(req, res) {
+
+  try {
+
+    const { short_code } = req.params;
+
+    const result = await urlService.getStats(short_code);
+
+    if (!result) {
+      return res.status(404).json({
+        error: "URL not found"
+      });
+    }
+
+    res.json(result);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      error: "Internal server error"
+    });
+
+  }
+
+}
+
 module.exports = {
   shortenUrl,
-  redirectUrl
+  redirectUrl,
+  getStats
 };

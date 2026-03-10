@@ -53,8 +53,23 @@ async function incrementClicks(shortCode) {
 
 }
 
+async function getStats(shortCode) {
+
+  const query = `
+    SELECT original_url, short_code, clicks, created_at
+    FROM urls
+    WHERE short_code = $1
+  `;
+
+  const result = await db.query(query, [shortCode]);
+
+  return result.rows[0];
+
+}
+
 module.exports = {
   createShortUrl,
   getOriginalUrl,
-  incrementClicks
+  incrementClicks,
+  getStats
 };
