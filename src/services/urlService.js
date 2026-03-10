@@ -12,6 +12,7 @@ function generateShortCode(length = 6) {
 }
 
 async function createShortUrl(originalUrl) {
+
   const shortCode = generateShortCode();
 
   const query = `
@@ -27,6 +28,33 @@ async function createShortUrl(originalUrl) {
   return result.rows[0];
 }
 
+async function getOriginalUrl(shortCode) {
+
+  const query = `
+    SELECT original_url
+    FROM urls
+    WHERE short_code = $1
+  `;
+
+  const result = await db.query(query, [shortCode]);
+
+  return result.rows[0];
+}
+
+async function incrementClicks(shortCode) {
+
+  const query = `
+    UPDATE urls
+    SET clicks = clicks + 1
+    WHERE short_code = $1
+  `;
+
+  await db.query(query, [shortCode]);
+
+}
+
 module.exports = {
-  createShortUrl
+  createShortUrl,
+  getOriginalUrl,
+  incrementClicks
 };

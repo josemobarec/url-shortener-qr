@@ -1,7 +1,9 @@
 const urlService = require("../services/urlService");
 
 async function shortenUrl(req, res) {
+
   try {
+
     const { original_url } = req.body;
 
     if (!original_url) {
@@ -17,13 +19,44 @@ async function shortenUrl(req, res) {
     });
 
   } catch (error) {
+
     console.error(error);
+
     res.status(500).json({
       error: "Internal server error"
     });
+
   }
+
+}
+
+async function redirectUrl(req, res) {
+
+  try {
+
+    const { short_code } = req.params;
+
+    const result = await urlService.getOriginalUrl(short_code);
+
+    if (!result) {
+      return res.status(404).send("URL not found");
+    }
+
+    await urlService.incrementClicks(short_code);
+
+    res.redirect(result.original_url);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).send("Internal server error");
+
+  }
+
 }
 
 module.exports = {
-  shortenUrl
+  shortenUrl,
+  redirectUrl
 };
