@@ -7,7 +7,10 @@ const errorHandler = require("./middleware/errorHandler");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const morgan = require("morgan");
+
 app.use(express.json());
+app.use(morgan("dev"));
 
 app.use("/api", urlRoutes);
 
