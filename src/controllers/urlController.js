@@ -4,7 +4,7 @@ async function shortenUrl(req, res) {
 
   try {
 
-    const { original_url } = req.body;
+    const original_url = req.body?.original_url;
 
     if (!original_url) {
       return res.status(400).json({
@@ -14,7 +14,10 @@ async function shortenUrl(req, res) {
 
     const result = await urlService.createShortUrl(original_url);
 
+    const baseUrl = process.env.BASE_URL;
+
     res.json({
+      short_url: `${baseUrl}/api/${result.short_code}`,
       short_code: result.short_code
     });
 
