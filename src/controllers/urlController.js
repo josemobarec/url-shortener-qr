@@ -92,17 +92,18 @@ async function getQRCode(req, res) {
 
     const qr = await urlService.generateQRCode(short_code);
 
-    res.json({
-      qr_code: qr
-    });
+    const img = qr.replace(/^data:image\/png;base64,/, "");
+
+    const buffer = Buffer.from(img, "base64");
+
+    res.set("Content-Type", "image/png");
+    res.send(buffer);
 
   } catch (error) {
 
     console.error(error);
 
-    res.status(500).json({
-      error: "Internal server error"
-    });
+    res.status(500).send("Internal server error");
 
   }
 
