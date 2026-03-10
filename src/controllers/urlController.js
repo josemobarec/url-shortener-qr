@@ -1,4 +1,5 @@
 const urlService = require("../services/urlService");
+const validator = require("validator");
 
 async function shortenUrl(req, res) {
 
@@ -12,9 +13,15 @@ async function shortenUrl(req, res) {
       });
     }
 
+    if (!validator.isURL(original_url)) {
+      return res.status(400).json({
+        error: "invalid URL format"
+      });
+    }
+
     const result = await urlService.createShortUrl(original_url);
 
-    const baseUrl = process.env.BASE_URL;
+    const baseUrl = process.env.BASE_URL || "http://localhost:3000";
 
     res.json({
       short_url: `${baseUrl}/api/${result.short_code}`,
