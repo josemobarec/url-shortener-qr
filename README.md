@@ -246,7 +246,13 @@ Log files are generated automatically:
   - Automated tests with Jest
 
    ---
+## Documentation
 
+Full project documentation can be found here:
+
+[Project Documentation](docs/url-shortener-report.pdf)
+
+   ---
 ## Author
 
 José LBM
