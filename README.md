@@ -56,7 +56,7 @@ Libraries
   ▼
   PostgreSQL Database\
 
-  ---
+---
   
 ## Project Structure
   
@@ -90,10 +90,10 @@ Libraries
   └── combined.log\
   
   package.json\
-  README.md\
+  README.md
 
 
-    ---
+  ---
   
 ## Installation
 
@@ -107,7 +107,7 @@ Install dependencies
 npm install
 ```
 
-    ---
+  ---
   
 ## Environment Variables
 
@@ -122,7 +122,7 @@ DB_USER=postgres
 DB_PASSWORD=yourpassword
 DB_NAME=url_shortener
 ```
-    ---
+  ---
   
 ## Database Setup
 
@@ -141,7 +141,7 @@ CREATE TABLE urls (
 );
 ```
 
-    ---
+  ---
   
 ## Running the API
 
@@ -155,7 +155,7 @@ Server will run at
 http://localhost:3000
 ```
 
-    ---
+   ---
   
 ## API Endpoints
 
@@ -182,7 +182,7 @@ Response
   "short_code": "abc123"
 }
 ```
-    ---
+  ---
   
 ## Redirect to Original URL
 
@@ -195,7 +195,7 @@ Example
 `http://localhost:3000/api/abc123`
 
 
-    ---
+   ---
 
 
 
@@ -211,7 +211,7 @@ Example response
   "created_at": "2026-03-10T03:20:00.022Z"
 }
 ```
-    ---
+   ---
 
 
 ## Generate QR Code
@@ -224,7 +224,7 @@ Response
 }
 ```
 
-    ---
+   ---
 ## Logging
 Logs are handled using Winston.
 
@@ -232,7 +232,7 @@ Log files are generated automatically:
 
 `logs/error.log`
 `logs/combined.log`
-    ---
+   ---
 
 ## Security Features
   Possible enhancements:
@@ -245,7 +245,7 @@ Log files are generated automatically:
   
   - Automated tests with Jest
 
-    ---
+   ---
 
 ## Author
 
