@@ -11,10 +11,6 @@ app.get("/", (req, res) => {
   res.send("URL Shortener API is running");
 });
 
-db.query("SELECT NOW()")
-  .then(() => console.log("Database connected"))
-  .catch(err => console.error("Database connection error:", err));
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
