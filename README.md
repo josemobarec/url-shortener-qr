@@ -43,18 +43,18 @@ Libraries
 ---
 
 ## Project Architecture
-  Client
+  Client \
   │
   ▼
-  Express API
+  Express API \
   │
-  ├── Controllers
-  ├── Services
-  ├── Routes
-  ├── Middleware
+  ├── Controllers\
+  ├── Services\
+  ├── Routes\
+  ├── Middleware\
   │
   ▼
-  PostgreSQL Database
+  PostgreSQL Database\
 
   ---
   
@@ -62,35 +62,35 @@ Libraries
   
   src
   │
-  ├── controllers
-  │   urlController.js
+  ├── controllers\
+  │   urlController.js\
   │
-  ├── services
-  │   urlService.js
+  ├── services\
+  │   urlService.js\
   │
-  ├── routes
-  │   urlRoutes.js
+  ├── routes\
+  │   urlRoutes.js\
   │
-  ├── database
-  │   db.js
+  ├── database\
+  │   db.js\
   │
-  ├── middleware
-  │   errorHandler.js
-  │   rateLimiter.js
+  ├── middleware\
+  │   errorHandler.js\
+  │   rateLimiter.js\
   │
-  ├── utils
-  │   logger.js
-  │   AppError.js
+  ├── utils\
+  │   logger.js\
+  │   AppError.js\
   │
-  └── app.js
+  └── app.js\
   
-  logs
+  logs\
   │
-  ├── error.log
-  └── combined.log
+  ├── error.log\
+  └── combined.log\
   
-  package.json
-  README.md
+  package.json\
+  README.md\
 
 
     ---
